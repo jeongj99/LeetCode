@@ -7,8 +7,6 @@ var mySqrt = function(x) {
     
     let right = Math.floor(x / 2 + 1);
     
-    let mid = 0;
-    
     while (left <= right) {
         const mid = Math.round((left + right) / 2);
         
