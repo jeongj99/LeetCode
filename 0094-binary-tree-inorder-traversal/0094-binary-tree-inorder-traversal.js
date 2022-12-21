@@ -22,7 +22,7 @@ var inorderTraversal = function(root) {
             while (checker.right !== null && checker.right !== current) {
                 checker = checker.right;
             }
-            if (!checker.right) {
+            if (checker.right === null) {
                 checker.right = current;
                 current = current.left;
             } else {
