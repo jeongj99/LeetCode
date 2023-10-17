@@ -4,20 +4,17 @@
  * @return {number[]}
  */
 var twoSum = function (nums, target) {
-    const seenNumbers = [];
+    const seenNumbers = {};
     const result = [];
     
     for (let i = 0; i < nums.length; i++) {
-        if (seenNumbers.includes(target - nums[i])) {
-            const j = nums.findIndex((element) => {
-                return element === (target - nums[i]);
-            })
-            result.push(j, i);
+        if ((target - nums[i]) in seenNumbers) {
+            result.push(seenNumbers[(target - nums[i])], i);
             return result;
         }
-        
-        seenNumbers.push(nums[i]);
+        seenNumbers[nums[i]] = i;
     }
+    
     
     return result;
 };
