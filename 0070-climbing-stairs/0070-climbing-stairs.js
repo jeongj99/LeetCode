@@ -4,14 +4,13 @@
  */
 var climbStairs = function(n) {
     let x = 1;
-    let y = 2;
-    let z = 0;
+    let y = 1;
     
-    for (let i = 3; i <= n; i++) {
-        z = x + y;
-        x = y;
-        y = z;
+    for (let i = 0; i < n - 1; i++) {
+        const z = x + y;
+        y = x
+        x = z
     }
     
-    return n === 1 ? x : y;
+    return x;
 };
