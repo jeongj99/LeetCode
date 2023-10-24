@@ -2,17 +2,45 @@
  * @param {number[]} nums
  * @return {number[]}
  */
-var sortArray = function(nums) {
-    for (let i = 1; i < nums.length; i++) {
-        let j = i - 1;
-        
-        while (j >= 0 && nums[j + 1] < nums[j]) {
-            const temp = nums[j + 1];
-            nums[j + 1] = nums[j];
-            nums[j] = temp
-            j--;
+
+const merge = (arrOne, arrTwo) => {
+    const result = [];
+    let i = 0;
+    let j = 0;
+    
+    while (i < arrOne.length && j < arrTwo.length) {
+        if (arrOne[i] <= arrTwo[j]) {
+            result.push(arrOne[i]);
+            i++;
+        } else {
+            result.push(arrTwo[j]);
+            j++;
         }
     }
     
-    return nums;
+    while (i < arrOne.length) {
+        result.push(arrOne[i]);
+        i++;
+    }
+    
+    while (j < arrTwo.length) {
+        result.push(arrTwo[j]);
+        j++;
+    }
+    
+    return result;
+}
+
+var sortArray = function(nums) {
+    if (nums.length <= 1) {
+        return nums;
+    }
+    
+    let mid = Math.floor(nums.length / 2);
+    
+    let left = sortArray(nums.slice(0, mid));
+    
+    let right = sortArray(nums.slice(mid));
+    
+    return merge(left, right);
 };
