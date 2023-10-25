@@ -6,7 +6,6 @@ var sortColors = function(nums) {
     const count = [0, 0, 0];
     
     for (const num of nums) {
-        console.log(count);
         count[num]++;
     }
     
